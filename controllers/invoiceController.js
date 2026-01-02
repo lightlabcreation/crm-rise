@@ -327,6 +327,15 @@ const create = async (req, res) => {
     let finalClientId = client_id;
     const userId = req.userId; // auth middleware always sets this
 
+    console.log('--- DEBUG INVOICE CREATE ---');
+    console.log('Received Body:', { client_id, company_id, invoice_date });
+    console.log('Auth Context:', {
+      headersAuth: !!req.headers.authorization,
+      userId,
+      reqUser: !!req.user,
+      companyId: req.companyId
+    });
+
     // Check if we need to resolve the client ID
     // 1. If finalClientId matches userId, frontend definitely sent the wrong ID (user ID instead of client ID)
     // 2. If finalClientId is missing and we have a user, try to find their client profile

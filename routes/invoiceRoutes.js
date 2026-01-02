@@ -5,8 +5,12 @@
 const express = require('express');
 const router = express.Router();
 const invoiceController = require('../controllers/invoiceController');
+const { optionalAuth } = require('../middleware/auth');
 
-// No authentication required - all routes are public
+// Apply optional auth to all routes to populate req.user, req.userId, req.companyId if token exists
+router.use(optionalAuth);
+
+// Routes
 router.get('/', invoiceController.getAll);
 router.get('/:id', invoiceController.getById);
 router.post('/', invoiceController.create);
