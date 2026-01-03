@@ -65,6 +65,7 @@ router.put('/',
 router.put('/bulk', 
   settingsController.bulkUpdate
 );
+router.post('/test-email', settingsController.testEmail);
 
 module.exports = router;
 

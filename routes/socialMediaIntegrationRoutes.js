@@ -10,6 +10,7 @@ router.put('/:id', socialMediaIntegrationController.update);
 router.delete('/:id', socialMediaIntegrationController.delete);
 router.post('/:id/connect', socialMediaIntegrationController.connect);
 router.post('/:id/disconnect', socialMediaIntegrationController.disconnect);
+router.get('/callback/:platform', socialMediaIntegrationController.callback);
 
 module.exports = router;
 

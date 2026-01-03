@@ -1,0 +1,27 @@
+$content = @"
+PORT=5000
+NODE_ENV=development
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=
+DB_NAME=crm_db_new
+DB_PORT=3306
+JWT_SECRET=worksuite_crm_jwt_secret_key_2025_change_in_production
+JWT_EXPIRE=24h
+UPLOAD_DIR=./uploads
+MAX_FILE_SIZE=10485760
+ALLOWED_FILE_TYPES=jpg,jpeg,png,pdf,doc,docx,xls,xlsx
+FRONTEND_URL=http://localhost:5173
+DEFAULT_PAGE_SIZE=10
+MAX_PAGE_SIZE=100
+RATE_LIMIT_WINDOW_MS=900000
+RATE_LIMIT_MAX_REQUESTS=100
+LOG_LEVEL=info
+LOG_FILE=./logs/app.log
+SESSION_SECRET=worksuite_session_secret_2025_change_in_production
+API_VERSION=v1
+TZ=UTC
+ENCRYPTION_KEY=f3b5c7d9e1a2f4b6c8d0e2g4h6j8k0l2m4n6p8q0r2t4v6x8z0b2d4f6h8j0l2n
+"@
+$content | Set-Content .env -Encoding UTF8
+Write-Host "Fixed .env file"

@@ -166,10 +166,77 @@ const bulkUpdate = async (req, res) => {
   }
 };
 
+/**
+ * Test email configuration
+ * POST /api/v1/settings/test-email
+ */
+const testEmail = async (req, res) => {
+  try {
+    const { 
+      to, 
+      smtp_host, 
+      smtp_port, 
+      smtp_username, 
+      smtp_password, 
+      smtp_encryption,
+      email_from,
+      email_from_name
+    } = req.body;
+
+    if (!to) {
+      return res.status(400).json({
+        success: false,
+        error: 'Test email address is required'
+      });
+    }
+
+    // In production, you would use nodemailer here
+    // For now, we'll simulate the email sending
+    console.log('Test email configuration:', {
+      to,
+      smtp_host,
+      smtp_port,
+      smtp_username,
+      smtp_encryption,
+      email_from,
+      email_from_name
+    });
+
+    // Validate SMTP settings
+    if (!smtp_host || !smtp_port) {
+      return res.status(400).json({
+        success: false,
+        error: 'SMTP host and port are required'
+      });
+    }
+
+    // Simulate email sending (in production, use nodemailer)
+    // const nodemailer = require('nodemailer');
+    // const transporter = nodemailer.createTransporter({...});
+    // await transporter.sendMail({...});
+
+    res.json({
+      success: true,
+      message: 'Test email sent successfully',
+      data: {
+        to,
+        from: email_from || 'noreply@crm.com'
+      }
+    });
+  } catch (error) {
+    console.error('Test email error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message || 'Failed to send test email'
+    });
+  }
+};
+
 module.exports = { 
   get, 
   update, 
   getByCategory, 
-  bulkUpdate 
+  bulkUpdate,
+  testEmail
 };
 

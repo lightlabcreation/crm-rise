@@ -141,6 +141,8 @@ app.use(`${apiBase}/notifications`, notificationRoutes);
 app.use(`${apiBase}/notes`, noteRoutes);
 app.use(`${apiBase}/orders`, orderRoutes);
 app.use(`${apiBase}/items`, itemRoutes);
+app.use(`${apiBase}/zoho-books`, require('./routes/zohoBooksRoutes'));
+app.use(`${apiBase}/payment-gateways`, require('./routes/paymentGatewayRoutes'));
 
 // 404 handler
 app.use((req, res) => {
